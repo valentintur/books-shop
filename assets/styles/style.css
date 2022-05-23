@@ -1,0 +1,57 @@
+.header,
+.main,
+.footer,
+.section,
+.cart {
+    border: 1px solid #efefef;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.book-list .book {
+    width: 300px;
+    min-height: 500px;
+    padding: 10px;
+    border: 1px solid #efefef;
+    background-color: #e6e6e6;
+}
+
+.book__modal {
+    display: none;
+}
+
+.book__modal.active {
+    display: block;
+}
+
+.book__show-more-text {
+    position: fixed;
+    top: 30%;
+    left: calc(50% - 200px);
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black;
+    background: #fff;
+}
+
+.modal-close {
+    position: fixed;
+    top: calc(30% - 20px);
+    left: calc(50% + 200px);
+}
+
+.cart {
+    min-width: 300px;
+    border: 1px solid black;
+}
+
+.main {
+    display: flex;
+}
