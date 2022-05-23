@@ -49,7 +49,10 @@ const checkForm = () => {
     for(let i = 0; i < checkingArr.length; i++) {
         if((checkingArr[i].value.length == 0 || !checkingArr.some(el => el.checked)) && checkingArr[i].type != "button")
         {
+            //checkingArr[i].classList.add('error');
             cansubmit = false;
+        } else {
+           // checkingArr[i].classList.remove('error');
         }
 
     }
