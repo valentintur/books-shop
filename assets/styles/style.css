@@ -1,9 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+body {
+    font-family: 'Acme', sans-serif;
+}
+
+.wrapper {
+    max-width: 100%;
+    width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
 .header,
 .main,
 .footer,
 .section,
 .cart {
+    padding: 10px;
     border: 1px solid #efefef;
+}
+
+.header {
+    border-bottom: 0;
+}
+
+.main {
+    display: flex;
+}
+
+button {
+    padding: 10px;
+    margin: 10px 10px 0 0 !important;
+    background: #fff;
+    border: 1px solid #efefef;
+    border-radius: 10px;
+    color: #000;
+    background-color: #f9f9f9;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #c8c8c8;
+    border: 1px solid #000;
 }
 
 .book-list {
@@ -14,11 +52,20 @@
 }
 
 .book-list .book {
-    width: 300px;
-    min-height: 500px;
+    width: 180px;
+    /* min-height: 500px; */
     padding: 10px;
     border: 1px solid #efefef;
-    background-color: #e6e6e6;
+    background-color: #fff;
+}
+
+.book__price-block {
+    display: flex;
+    align-items: center;
+}
+
+.book__price-text {
+    padding-right: 10px;
 }
 
 .book__modal {
@@ -47,11 +94,51 @@
     left: calc(50% + 200px);
 }
 
+.book__image {
+    width: 100%;
+    height: 250px;
+    border: 1px solid #eee;
+}
+
+.book-cart__image {
+    height: 250px;
+    max-width: 100%;
+}
+
 .cart {
     min-width: 300px;
     border: 1px solid black;
 }
 
-.main {
+.cart-all-sum {
     display: flex;
+    align-items: center;
+}
+
+.cart-sum-subtitle {
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+.cart-order-link {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(20, 112, 20);
+    border: 1px solid rgb(0, 107, 0);
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cart-order-link:hover {
+    cursor: pointer;
+    background-color: rgb(15, 92, 15);
+}
+
+.book-cart {
+    padding: 10px;
+    border: 1px solid rgb(0, 107, 0);
+    margin-bottom: 10px;
 }
