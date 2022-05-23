@@ -7,7 +7,7 @@
     <title>Your order</title>
   </head>
   <body>
-    <form>
+    <form name="order-form" id="order-form">
       <input
         type="text"
         id="fname"
@@ -38,8 +38,79 @@
         required
       />
 
+      <input
+        type="text"
+        id="lstreet"
+        name="lstreet"
+        placeholder="Your street"
+        minlength="5"
+        pattern="[a-zA-Z0-9]+"
+        required
+      />
+
+      <input
+        type="text"
+        id="lflat"
+        name="lflat"
+        placeholder="Your flat number"
+        pattern="[0-9][0-9-]+"
+        required
+      />
+
+      <div class="payment-type">
+        <p>Payment type:</p>
+        <input
+          type="radio"
+          id="payment-type-cash"
+          name="payment-type"
+          value="cash"
+          required
+        />
+        <label for="payment-type-cash">Cash</label>
+
+        <input
+          type="radio"
+          id="payment-type-card"
+          name="payment-type"
+          value="card"
+        />
+        <label for="payment-type-card">Card</label>
+      </div>
+
+      <div class="choose-gifts">
+        <p>Choose 2 gifts (optional)</p>
+
+        <input
+          type="checkbox"
+          name="check-gift"
+          id="gift1"
+          value="pack as a gift"
+        />
+        <label for="gift1">pack as a gift</label><br />
+        <input
+          type="checkbox"
+          name="check-gift"
+          id="gift2"
+          value="add postcard"
+        />
+        <label for="gift2">add postcard</label><br />
+        <input
+          type="checkbox"
+          name="check-gift"
+          id="gift3"
+          value="provide 2% discount to the next time"
+        />
+        <label for="gift3">provide 2% discount to the next time</label><br />
+        <input
+          type="checkbox"
+          name="check-gift"
+          id="gift4"
+          value="branded pen or pencil"
+        />
+        <label for="gift4">branded pen or penci</label><br />
+      </div>
       <div class="submit-button">
-        <input type="submit" value="Sent my order" />
+        <input type="submit" id="submit-button" value="Sent my order" />
       </div>
     </form>
     <script src="./assets/scripts/check-form.js"></script>
