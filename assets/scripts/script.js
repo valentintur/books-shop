@@ -61,18 +61,30 @@ const renderBookShop = () => {
     renderHtml('div', 'wrapper', 'body');
     renderHtml('header', 'header', '.wrapper');
     renderHtml('h1', 'logo', '.header');
-    renderHtml('h2', 'cart-title', '.header');
-    document.querySelector('.logo').innerHTML = 'JS Book Shop';
-    document.querySelector('.cart-title').innerHTML = 'Your Cart';
+    document.querySelector('.logo').innerHTML = 'JS Book Shop By Valentin Tur';
     renderHtml('main', 'main', '.wrapper');
     renderHtml('section', 'book-catalog', '.main');
+
     renderHtml('aside', 'cart', '.main');
+    renderHtml('div', 'cart-header', '.cart');
+    renderHtml('h2', 'cart-title', '.cart-header');
+    renderHtml('div', 'cart-all-sum', '.cart-header');
+    renderHtml('div', 'cart-sum-subtitle', '.cart-all-sum');
+    renderHtml('div', 'cart-sum', '.cart-all-sum');
+    renderHtml('a', 'cart-order-link', '.cart-header');
+    document.querySelector('.cart-title').innerHTML = 'Your Cart';
+    document.querySelector('.cart-sum-subtitle').innerHTML = 'Total: ';
+    document.querySelector('.cart-sum').innerHTML = '0';
+    document.querySelector('.cart-order-link').href = './order.html';
+    document.querySelector('.cart-order-link').target = '_blank';
+    document.querySelector('.cart-order-link').innerHTML = 'Confirm Order';
+
+    renderHtml('div', 'cart-body', '.cart');
     renderHtml('footer', 'footer', '.wrapper');
     renderHtml('div', 'book-list', '.book-catalog');
 
-    renderHtml('div', 'cart-sum', '.cart');
-    const cart = document.querySelector('.cart');
-    //cart.innerHTML = 'Your cart:';
+
+    const cart = document.querySelector('.cart-body');
 
     let cartSum = 0;
     fetch('./data/books.json')
@@ -86,38 +98,54 @@ const renderBookShop = () => {
                 }
                 bookActions();          
                 
-
+                let tempArrBooksInCart = [];
                 let addToCartButtons =  document.querySelectorAll('.book__add-cart');
                 
+
                 addToCartButtons.forEach((btn, index) => {
 
                     btn.addEventListener('click', () => {
-                        renderHtml('article', 'book-cart', '.cart'); 
+                        renderHtml('article', 'book-cart', '.cart-body'); 
                         let cartBooksArray = cart.querySelectorAll('.book-cart');
                         
+                        renderHtml('img', 'book-cart__image', '.book-cart', cartBooksArray.length - 1);
                         renderHtml('h3', 'book-cart__title', '.book-cart', cartBooksArray.length - 1);
                         renderHtml('h4', 'book-cart__author', '.book-cart', cartBooksArray.length - 1);
                         renderHtml('div', 'book-cart__price', '.book-cart', cartBooksArray.length - 1);
                         renderHtml('button', 'book-cart__remove', '.book-cart', cartBooksArray.length - 1);
 
+                        document.querySelectorAll('.book-cart__image')[cartBooksArray.length - 1].src = data[index].imageLink;
                         document.querySelectorAll('.book-cart__title')[cartBooksArray.length - 1].innerHTML = data[index].title;
                         document.querySelectorAll('.book-cart__author')[cartBooksArray.length - 1].innerHTML = data[index].author;
                         document.querySelectorAll('.book-cart__price')[cartBooksArray.length - 1].innerHTML = data[index].price;
                         document.querySelectorAll('.book-cart__remove')[cartBooksArray.length - 1].innerHTML = 'Remove';
                         cartSum = cartSum + data[index].price;
+                        console.log('project for RSSchool By Valentin Tur');
                         document.querySelector('.cart-sum').innerHTML = cartSum;
                     })
                 
-                }) 
+                });
+
+                
+
+                
                 
                 const cartSumElem = document.querySelector('.cart-sum');
                 let removeButtons = document.querySelectorAll('.book-cart__remove');
                 cartSumElem.addEventListener('DOMNodeInserted', () => {
     
+                    let bookCartElemets = document.querySelectorAll('.book-cart');
+                    //console.log(bookCartElemets)
+
+                    let bookCartPriceElemets = document.querySelectorAll('.book-cart__price');
+
                     removeButtons = document.querySelectorAll('.book-cart__remove');
+
                     removeButtons.forEach((btnRemove, indexRemove) => {
                         console.log(indexRemove)
                         btnRemove.addEventListener('click', () => {
+                            //tempArrBooksInCart.push(removeButtons[indexRemove]);
+                            //console.log(tempArrBooksInCart)
                             cartSum = cartSum - +document.querySelectorAll('.book-cart__price')[indexRemove].innerHTML;
                             document.querySelector('.cart-sum').innerHTML = cartSum;
                             document.querySelectorAll('.book-cart')[indexRemove].remove();
@@ -131,17 +159,6 @@ const renderBookShop = () => {
 
             
     // end fetch  
-        
-
-    
-
-
-
-
-
-            
-            
-            
 
 }
 
