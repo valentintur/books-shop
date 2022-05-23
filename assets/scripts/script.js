@@ -12,7 +12,9 @@ const renderBookShop = () => {
         renderHtml('img', 'book__image', '.book', book);
         renderHtml('h3', 'book__title', '.book', book);
         renderHtml('h4', 'book__author', '.book', book);
-        renderHtml('div', 'book__price', '.book', book);
+        renderHtml('div', 'book__price-block', '.book', book);
+        renderHtml('div', 'book__price-text', '.book__price-block', book);
+        renderHtml('div', 'book__price', '.book__price-block', book);
         renderHtml('button', 'book__add-cart', '.book', book);
         renderHtml('button', 'book__show-more', '.book', book);
         renderHtml('div', 'book__modal', '.book', book);
@@ -23,6 +25,7 @@ const renderBookShop = () => {
         document.querySelectorAll('.book__image')[book].alt = data[book].title;
         document.querySelectorAll('.book__title')[book].innerHTML = data[book].title;
         document.querySelectorAll('.book__author')[book].innerHTML = data[book].author;
+        document.querySelectorAll('.book__price-text')[book].innerHTML = 'Book price: ';
         document.querySelectorAll('.book__price')[book].innerHTML = data[book].price;
         document.querySelectorAll('.book__show-more-text')[book].innerHTML = data[book].description;
         document.querySelectorAll('.book__show-more')[book].innerHTML = 'Show More';
@@ -57,6 +60,10 @@ const renderBookShop = () => {
 
     renderHtml('div', 'wrapper', 'body');
     renderHtml('header', 'header', '.wrapper');
+    renderHtml('h1', 'logo', '.header');
+    renderHtml('h2', 'cart-title', '.header');
+    document.querySelector('.logo').innerHTML = 'JS Book Shop';
+    document.querySelector('.cart-title').innerHTML = 'Your Cart';
     renderHtml('main', 'main', '.wrapper');
     renderHtml('section', 'book-catalog', '.main');
     renderHtml('aside', 'cart', '.main');
@@ -64,12 +71,10 @@ const renderBookShop = () => {
     renderHtml('div', 'book-list', '.book-catalog');
 
     renderHtml('div', 'cart-sum', '.cart');
-    
-
     const cart = document.querySelector('.cart');
-    let cartSum = 0;
-    // document.querySelector('.cart-sum').innerHTML = cartSum;
+    //cart.innerHTML = 'Your cart:';
 
+    let cartSum = 0;
     fetch('./data/books.json')
             .then(response => {
                 return response.json();
@@ -79,17 +84,14 @@ const renderBookShop = () => {
                 for (let book in data) {
                     renderBook(book, data, '.book-list');
                 }
-
-                bookActions();
+                bookActions();          
+                
 
                 let addToCartButtons =  document.querySelectorAll('.book__add-cart');
-                let removeButtons = document.getElementsByClassName('book-cart__remove');
-                let removeButtonsArray = [...removeButtons];
-
+                
                 addToCartButtons.forEach((btn, index) => {
 
                     btn.addEventListener('click', () => {
-        
                         renderHtml('article', 'book-cart', '.cart'); 
                         let cartBooksArray = cart.querySelectorAll('.book-cart');
                         
@@ -104,34 +106,42 @@ const renderBookShop = () => {
                         document.querySelectorAll('.book-cart__remove')[cartBooksArray.length - 1].innerHTML = 'Remove';
                         cartSum = cartSum + data[index].price;
                         document.querySelector('.cart-sum').innerHTML = cartSum;
-
-                        removeButtons = document.getElementsByClassName('book-cart__remove');
-                        removeButtonsArray = [...removeButtons];
-
                     })
                 
-                })
-
+                }) 
                 
-                    console.log(removeButtonsArray);
-                    removeButtonsArray.forEach((btnRemove, indexRemove) => {
-                        console.log(btnRemove);
-                        console.log(sumRemoveButtons);
-                        btn.addEventListener('click', () => {
-                                console.log(removeButtonsArray);
-                                console.log(document.querySelectorAll('.book-cart__price')[indexRemove].innerHTML);
-                                cartSum = cartSum - +document.querySelectorAll('.book-cart__price')[sumRemoveButtons].innerHTML;
-                                document.querySelector('.cart-sum').innerHTML = cartSum;
-                                document.querySelectorAll('.book-cart')[sumRemoveButtons].remove();
+                const cartSumElem = document.querySelector('.cart-sum');
+                let removeButtons = document.querySelectorAll('.book-cart__remove');
+                cartSumElem.addEventListener('DOMNodeInserted', () => {
+    
+                    removeButtons = document.querySelectorAll('.book-cart__remove');
+                    removeButtons.forEach((btnRemove, indexRemove) => {
+                        console.log(indexRemove)
+                        btnRemove.addEventListener('click', () => {
+                            cartSum = cartSum - +document.querySelectorAll('.book-cart__price')[indexRemove].innerHTML;
+                            document.querySelector('.cart-sum').innerHTML = cartSum;
+                            document.querySelectorAll('.book-cart')[indexRemove].remove();
                         })
                     });
-                
+    
+                })
+
+
+            })
+
+            
+    // end fetch  
         
-                    
 
-                
+    
 
-            });    // end fetch  
+
+
+
+
+            
+            
+            
 
 }
 
