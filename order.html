@@ -8,15 +8,40 @@
   </head>
   <body>
     <form>
-      <label for="fname">Your name:</label><br />
       <input
         type="text"
         id="fname"
         name="fname"
         placeholder="Your name"
-      /><br />
-      <label for="lname">Your surname:</label><br />
-      <input type="text" id="lname" name="lname" placeholder="Your surname" />
+        minlength="4"
+        pattern="[a-zA-Z]+"
+        required
+      />
+
+      <input
+        type="text"
+        id="lname"
+        name="lname"
+        placeholder="Your surname"
+        minlength="5"
+        pattern="[a-zA-Z]+"
+        required
+      />
+
+      <input
+        type="date"
+        id="order-date"
+        name="order-date"
+        placeholder="Delivery date"
+        value=""
+        min=""
+        required
+      />
+
+      <div class="submit-button">
+        <input type="submit" value="Sent my order" />
+      </div>
     </form>
+    <script src="./assets/scripts/check-form.js"></script>
   </body>
 </html>
