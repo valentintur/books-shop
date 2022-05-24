@@ -105,6 +105,14 @@ button:hover {
     max-width: 100%;
 }
 
+.book-cart__price-block {
+    display: flex;
+}
+
+.book-cart__price-text {
+    padding-right: 10px;
+}
+
 .cart {
 
     min-width: 300px;
