@@ -1,4 +1,9 @@
 
+let totalPrice = localStorage.getItem('price');
+console.log(totalPrice);
+
+document.querySelector('.total-price-from-shop').innerHTML = totalPrice;
+
 const checkDate = () => {
     let dateControl = document.querySelector('input[type="date"]');
     let today = new Date();
