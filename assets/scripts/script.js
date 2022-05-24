@@ -127,11 +127,16 @@ const renderBookShop = () => {
                         document.querySelector('.cart-sum').innerHTML = cartSum;
                         localStorage.setItem('price', cartSum);
 
-                        document.querySelectorAll('.book-cart__remove')[cartBooksArray.length - 1].addEventListener('click', () => {
-                            cartSum = cartSum - +document.querySelectorAll('.book-cart__price')[cartBooksArray.length - 1].innerHTML;
+                        document.querySelectorAll('.book-cart__remove')[cartBooksArray.length - 1].addEventListener('click', (el) => {
+                            
+                            //console.log(el.path[1]);
+                            cartSum = cartSum - +el.path[1].querySelectorAll('.book-cart__price')[0].innerHTML;
                             document.querySelector('.cart-sum').innerHTML = cartSum;
                             localStorage.setItem('price', cartSum);
-                            document.querySelectorAll('.book-cart')[cartBooksArray.length - 1].remove();
+                            el.path[1].remove();
+                            //document.querySelectorAll('.book-cart')[cartBooksArray.length - 1].remove();
+                            cartBooksArray = cart.querySelectorAll('.book-cart');
+                 
                         })
 
                     })
