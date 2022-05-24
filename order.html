@@ -5,114 +5,132 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your order</title>
+    <link rel="stylesheet" href="./assets/styles/order.css" />
   </head>
   <body>
-    <form name="order-form" id="order-form">
-      <input
-        type="text"
-        id="fname"
-        name="fname"
-        placeholder="Your name"
-        minlength="4"
-        pattern="[a-zA-Z]+"
-        required
-      />
+    <div class="wrapper">
+      <form name="order-form" id="order-form">
+        <div class="simple-inputs">
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            placeholder="Your name"
+            minlength="4"
+            pattern="[a-zA-Z]+"
+            required
+          />
 
-      <input
-        type="text"
-        id="lname"
-        name="lname"
-        placeholder="Your surname"
-        minlength="5"
-        pattern="[a-zA-Z]+"
-        required
-      />
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            placeholder="Your surname"
+            minlength="5"
+            pattern="[a-zA-Z]+"
+            required
+          />
 
-      <input
-        type="date"
-        id="order-date"
-        name="order-date"
-        placeholder="Delivery date"
-        value=""
-        min=""
-        required
-      />
+          <input
+            type="date"
+            id="order-date"
+            name="order-date"
+            placeholder="Delivery date"
+            value=""
+            min=""
+            required
+          />
 
-      <input
-        type="text"
-        id="lstreet"
-        name="lstreet"
-        placeholder="Your street"
-        minlength="5"
-        pattern="[a-zA-Z0-9]+"
-        required
-      />
+          <input
+            type="text"
+            id="lstreet"
+            name="lstreet"
+            placeholder="Your street"
+            minlength="5"
+            pattern="[a-zA-Z0-9]+"
+            required
+          />
 
-      <input
-        type="text"
-        id="lflat"
-        name="lflat"
-        placeholder="Your flat number"
-        pattern="[0-9][0-9-]+"
-        required
-      />
+          <input
+            type="text"
+            id="lhouse"
+            name="lhouse"
+            placeholder="Your house number"
+            pattern="[0-9]"
+            required
+          />
 
-      <div class="payment-type">
-        <p>Payment type:</p>
-        <input
-          type="radio"
-          id="payment-type-cash"
-          name="payment-type"
-          value="cash"
-          required
-        />
-        <label for="payment-type-cash">Cash</label>
+          <input
+            type="text"
+            id="lflat"
+            name="lflat"
+            placeholder="Your flat number"
+            pattern="[0-9][0-9-]+"
+            required
+          />
+        </div>
 
-        <input
-          type="radio"
-          id="payment-type-card"
-          name="payment-type"
-          value="card"
-        />
-        <label for="payment-type-card">Card</label>
-      </div>
+        <div class="radio-checkboxes-block">
+          <div class="payment-type">
+            <p>Payment type:</p>
+            <input
+              type="radio"
+              id="payment-type-cash"
+              name="payment-type"
+              value="cash"
+              required
+            />
+            <label for="payment-type-cash">Cash</label>
 
-      <div class="choose-gifts">
-        <p>Choose 2 gifts (optional)</p>
+            <input
+              type="radio"
+              id="payment-type-card"
+              name="payment-type"
+              value="card"
+            />
+            <label for="payment-type-card">Card</label>
+          </div>
 
-        <input
-          type="checkbox"
-          name="check-gift"
-          id="gift1"
-          value="pack as a gift"
-        />
-        <label for="gift1">pack as a gift</label><br />
-        <input
-          type="checkbox"
-          name="check-gift"
-          id="gift2"
-          value="add postcard"
-        />
-        <label for="gift2">add postcard</label><br />
-        <input
-          type="checkbox"
-          name="check-gift"
-          id="gift3"
-          value="provide 2% discount to the next time"
-        />
-        <label for="gift3">provide 2% discount to the next time</label><br />
-        <input
-          type="checkbox"
-          name="check-gift"
-          id="gift4"
-          value="branded pen or pencil"
-        />
-        <label for="gift4">branded pen or penci</label><br />
-      </div>
-      <div class="submit-button">
-        <input type="submit" id="submit-button" value="Sent my order" />
-      </div>
-    </form>
+          <div class="choose-gifts">
+            <p>Choose 2 gifts (optional)</p>
+
+            <input
+              type="checkbox"
+              name="check-gift"
+              id="gift1"
+              value="pack as a gift"
+            />
+            <label for="gift1">pack as a gift</label><br />
+            <input
+              type="checkbox"
+              name="check-gift"
+              id="gift2"
+              value="add postcard"
+            />
+            <label for="gift2">add postcard</label><br />
+            <input
+              type="checkbox"
+              name="check-gift"
+              id="gift3"
+              value="provide 2% discount to the next time"
+            />
+            <label for="gift3">provide 2% discount to the next time</label
+            ><br />
+            <input
+              type="checkbox"
+              name="check-gift"
+              id="gift4"
+              value="branded pen or pencil"
+            />
+            <label for="gift4">branded pen or penci</label><br />
+          </div>
+        </div>
+        <div class="submit-button">
+          <input type="submit" id="submit-button" value="Sent my order" />
+        </div>
+      </form>
+      <div class="order-confirmation-text"></div>
+    </div>
     <script src="./assets/scripts/check-form.js"></script>
   </body>
 </html>
