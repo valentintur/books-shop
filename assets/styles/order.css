@@ -1,3 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+body {
+    font-family: 'Acme', sans-serif;
+}
+
+.wrapper {
+
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+    border: 1px solid #afaeae;
+}
+
 .error {
     border: 5px solid red;
+}
+
+input[type=text],
+input[type=date] {
+    width: calc(50% - 65px);
+    margin: 10px;
+    padding: 20px;
+    font-size: 16px;
+    color: #999;
+    border: 1px solid #afaeae;
+}
+
+input[type=text]::placeholder,
+input[type=date]::placeholder {
+    color: #999;
+    border: 1px solid #f9f9f9;
+}
+
+.simple-inputs,
+.radio-checkboxes-block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.choose-gifts,
+.payment-type {
+    width: calc(50% - 65px);
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #afaeae;
+}
+
+.choose-gifts p,
+.payment-type p {
+    font-size: 18px !important;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+input[type=submit] {
+    padding: 20px;
+    margin: 10px auto;
+    border: 1px solid #afaeae;
+    border-radius: 10px;
+    font-size: 24px;
 }
