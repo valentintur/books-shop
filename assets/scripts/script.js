@@ -98,7 +98,7 @@ const renderBookShop = () => {
                 }
                 bookActions();          
                 
-                let tempArrBooksInCart = [];
+                
                 let addToCartButtons =  document.querySelectorAll('.book__add-cart');
                 
 
@@ -126,40 +126,17 @@ const renderBookShop = () => {
                         console.log('project for RSSchool By Valentin Tur');
                         document.querySelector('.cart-sum').innerHTML = cartSum;
                         localStorage.setItem('price', cartSum);
+
+                        document.querySelectorAll('.book-cart__remove')[cartBooksArray.length - 1].addEventListener('click', () => {
+                            cartSum = cartSum - +document.querySelectorAll('.book-cart__price')[cartBooksArray.length - 1].innerHTML;
+                            document.querySelector('.cart-sum').innerHTML = cartSum;
+                            localStorage.setItem('price', cartSum);
+                            document.querySelectorAll('.book-cart')[cartBooksArray.length - 1].remove();
+                        })
+
                     })
                 
                 });
-
-                
-
-                
-                
-                const cartSumElem = document.querySelector('.cart-sum');
-                let removeButtons = document.querySelectorAll('.book-cart__remove');
-                cartSumElem.addEventListener('DOMNodeInserted', () => {
-    
-                    let bookCartElemets = document.querySelectorAll('.book-cart');
-                    //console.log(bookCartElemets)
-
-                    let bookCartPriceElemets = document.querySelectorAll('.book-cart__price');
-
-                    removeButtons = document.querySelectorAll('.book-cart__remove');
-
-                    removeButtons.forEach((btnRemove, indexRemove) => {
-                        console.log(indexRemove)
-                        btnRemove.addEventListener('click', () => {
-                            //tempArrBooksInCart.push(removeButtons[indexRemove]);
-                            //console.log(tempArrBooksInCart)
-                            cartSum = cartSum - +document.querySelectorAll('.book-cart__price')[indexRemove].innerHTML;
-                            document.querySelector('.cart-sum').innerHTML = cartSum;
-                            localStorage.setItem('price', cartSum);
-                            document.querySelectorAll('.book-cart')[indexRemove].remove();
-                        })
-                    });
-    
-                })
-
-
             })
 
             
