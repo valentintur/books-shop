@@ -73,7 +73,7 @@ const renderBookShop = () => {
     renderHtml('div', 'cart-sum', '.cart-all-sum');
     renderHtml('a', 'cart-order-link', '.cart-header');
     document.querySelector('.cart-title').innerHTML = 'Your Cart';
-    document.querySelector('.cart-sum-subtitle').innerHTML = 'Total: ';
+    document.querySelector('.cart-sum-subtitle').innerHTML = 'Total price: ';
     document.querySelector('.cart-sum').innerHTML = '0';
     document.querySelector('.cart-order-link').href = './order.html';
     document.querySelector('.cart-order-link').target = '_blank';
@@ -111,13 +111,16 @@ const renderBookShop = () => {
                         renderHtml('img', 'book-cart__image', '.book-cart', cartBooksArray.length - 1);
                         renderHtml('h3', 'book-cart__title', '.book-cart', cartBooksArray.length - 1);
                         renderHtml('h4', 'book-cart__author', '.book-cart', cartBooksArray.length - 1);
-                        renderHtml('div', 'book-cart__price', '.book-cart', cartBooksArray.length - 1);
+                        renderHtml('div', 'book-cart__price-block', '.book-cart', cartBooksArray.length - 1);
+                        renderHtml('div', 'book-cart__price-text', '.book-cart__price-block', cartBooksArray.length - 1);
+                        renderHtml('div', 'book-cart__price', '.book-cart__price-block', cartBooksArray.length - 1);
                         renderHtml('button', 'book-cart__remove', '.book-cart', cartBooksArray.length - 1);
 
                         document.querySelectorAll('.book-cart__image')[cartBooksArray.length - 1].src = data[index].imageLink;
                         document.querySelectorAll('.book-cart__title')[cartBooksArray.length - 1].innerHTML = data[index].title;
                         document.querySelectorAll('.book-cart__author')[cartBooksArray.length - 1].innerHTML = data[index].author;
                         document.querySelectorAll('.book-cart__price')[cartBooksArray.length - 1].innerHTML = data[index].price;
+                        document.querySelectorAll('.book-cart__price-text')[cartBooksArray.length - 1].innerHTML = 'Book price: ';
                         document.querySelectorAll('.book-cart__remove')[cartBooksArray.length - 1].innerHTML = 'Remove';
                         cartSum = cartSum + data[index].price;
                         console.log('project for RSSchool By Valentin Tur');
