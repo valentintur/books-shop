@@ -125,6 +125,7 @@ const renderBookShop = () => {
                         cartSum = cartSum + data[index].price;
                         console.log('project for RSSchool By Valentin Tur');
                         document.querySelector('.cart-sum').innerHTML = cartSum;
+                        localStorage.setItem('price', cartSum);
                     })
                 
                 });
@@ -151,6 +152,7 @@ const renderBookShop = () => {
                             //console.log(tempArrBooksInCart)
                             cartSum = cartSum - +document.querySelectorAll('.book-cart__price')[indexRemove].innerHTML;
                             document.querySelector('.cart-sum').innerHTML = cartSum;
+                            localStorage.setItem('price', cartSum);
                             document.querySelectorAll('.book-cart')[indexRemove].remove();
                         })
                     });
