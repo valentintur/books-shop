@@ -5,8 +5,8 @@ body {
 }
 
 .wrapper {
-    max-width: 100%;
-    width: 1200px;
+
+    max-width: 1200px;
     padding: 20px;
     margin: 0 auto;
 }
@@ -106,6 +106,7 @@ button:hover {
 }
 
 .cart {
+
     min-width: 300px;
     border: 1px solid black;
 }
@@ -141,4 +142,22 @@ button:hover {
     padding: 10px;
     border: 1px solid rgb(0, 107, 0);
     margin-bottom: 10px;
+}
+
+@media (max-width: 620px) {
+    .main {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cart {
+        order: 1;
+        width: 100%;
+        min-width: calc(100% - 20px);
+        margin-bottom: 10px;
+    }
+
+    .book-catalog {
+        order: 2;
+    }
 }

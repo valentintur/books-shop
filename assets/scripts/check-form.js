@@ -41,38 +41,44 @@ const checkBoxLimit = () => {
 	}
 }
 
+
+   
+    
+    
+
 const checkForm = () => {
     let elements = document.forms['order-form'].elements;
     let checkingArr = Array.from(elements);
-    
     let cansubmit = true;
     for(let i = 0; i < checkingArr.length; i++) {
         if((checkingArr[i].value.length == 0 || !checkingArr.some(el => el.checked)) && checkingArr[i].type != "button")
         {
             //checkingArr[i].classList.add('error');
             cansubmit = false;
-        } else {
-           // checkingArr[i].classList.remove('error');
-        }
-
+        } 
     }
-
-    //console.log(elements);
-    // Array.from(inputs).some(input => input.checked)
-
-    // const payCard = document.getElementById('payment-type-card');
-    // const payCash = document.getElementById('payment-type-cash');
-
-    // console.log(payCard);
-    // console.log(payCash);
-    // console.log(payCard.checked);
-    // console.log(payCash.checked);
     document.getElementById("submit-button").disabled = !cansubmit;  
 };
+
+checkForm();
+
+let elements = document.forms['order-form'].elements;
+let checkingArr = Array.from(elements);
+checkingArr.forEach((el) => {
+    el.addEventListener('change', checkForm);
+})
+
+const orderConfirmationText = document.querySelector('.order-confirmation-text');
+
 
 
 checkDate();
 checkBoxLimit();
 //checkForm();
-setInterval(checkForm, 1000);
+//setInterval(checkForm, 1000);
+
+document.getElementById("submit-button").addEventListener('click', () => {
+    //orderConfirmationText.innerHTML = `The order created. The delivery address is ${document.querySelector('#lstreet').value} street, house ${document.querySelector('#lhouse').value}, flat ${document.querySelector('#lflat').value}. Customer: ${document.querySelector('#fname').value} ${document.querySelector('#lname').value}`;
+    alert(`The order created. The delivery address is ${document.querySelector('#lstreet').value} street, house ${document.querySelector('#lhouse').value}, flat ${document.querySelector('#lflat').value}. Customer: ${document.querySelector('#fname').value} ${document.querySelector('#lname').value}`);
+})
 //();
